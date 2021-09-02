@@ -1,0 +1,9 @@
+# Package a jar containing your application
+$ sbt package
+$ sbt ~package (for continuous build)
+
+Working:
+spark-submit --class "Main" --jars localDependencies/spark-cassandra*,localDependencies/spark-sql* target/scala-2.11/*.jar
+// Write Class Name in place of Main
+Shorter:
+spark-submit --class "Main" --jars $(echo localDependencies/*.jar | tr ' ' ',') target/scala-2.11/dailyrankingupdates_2.11-1.0.jar
